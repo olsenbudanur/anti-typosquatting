@@ -1,0 +1,23 @@
+{
+  "name": "typosquating",
+  "version": "1.0.0",
+  "description": "Catch those pesky typosquatting libraries",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "jest",
+    "start": "ts-node src/index"
+  },
+  "author": "Vehbi Karaagac & Olsen Budanur",
+  "license": "ISC",
+  "devDependencies": {
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3"
+  }
+}
