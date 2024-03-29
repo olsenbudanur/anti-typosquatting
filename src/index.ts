@@ -9,15 +9,24 @@ const args = minimist(process.argv.slice(2));
 const packageName = args._[0];
 
 // Function to check for typos
-function checkForTypos(packageName: string) {
-  const trustedModules = ['react', 'lodash', 'axios', 'express']; // List of known trusted npm modules
+function checkForTypos(packageName: string): string | undefined {
+  const trustedModules = fs.readFileSync('/Users/olsenbudanur/Desktop/my_stuff/Projects/typosquating/src/top1000libs.txt', 'utf-8').split('\n');
+
   for (const module of trustedModules) {
+    
     const distance = levenshteinDistance(packageName, module);
-    if (distance < 2) {
-      return true;
+    //
+    // This distance means that the package name is a trusted module
+    if (distance == 0) {
+      return undefined;
+    }
+    //
+    // This distance means that the package name might be typo of a trusted module
+    if (distance > 0 && distance <= 3) {
+      return module;
     }
   }
-  return false;
+  return undefined;
 }
 
 function levenshteinDistance(a: string, b: string): number {
@@ -48,28 +57,34 @@ function levenshteinDistance(a: string, b: string): number {
 }
 
 // Prompt user for confirmation if typos are detected
-function promptForConfirmation(packageName: string) {
+function promptForConfirmation(packageName: string, typo: string) {
   const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
   });
 
-  readline.question(`Did you mean to install '${packageName}'? (Y/N): `, (answer: any) => {
+  readline.question(`Did you mean to install '${typo}'? (Y/N): `, (answer: any) => {
     if (answer.toLowerCase() !== 'y') {
       console.log('Installation aborted.');
       readline.close();
       process.exit(1);
     } else {
       readline.close();
-      executeOriginalNpmInstall(packageName);
+      executeOriginalNpmInstall(typo);
     }
   });
 }
 
 // Execute the original npm install command
 function executeOriginalNpmInstall(packageName: string) {
+  console.log(`2: ${packageName}`);
   const originalNpm = path.join(process.env.npm_execpath || process.env.NODE_EXE || 'npm');
+
+  console.log(`3: ${originalNpm}`)
+
   const command = `${originalNpm} install ${packageName}`;
+
+  console.log(`4: ${command}`)
 
   console.log(`Executing command: ${command}`);
   const child_process = require('child_process');
@@ -83,8 +98,12 @@ function main() {
     process.exit(1);
   }
 
-  if (checkForTypos(packageName)) {
-    promptForConfirmation(packageName);
+  console.log(`1: ${packageName}`);
+
+  let typo = checkForTypos(packageName);
+
+  if (typo !== undefined) {
+    promptForConfirmation(packageName, typo);
   } else {
     executeOriginalNpmInstall(packageName);
   }

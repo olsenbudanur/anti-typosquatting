@@ -11,7 +11,8 @@
   "scripts": {
     "build": "tsup",
     "test": "jest",
-    "start": "ts-node src/index"
+    "start": "ts-node src/index",
+    "safe-install": "ts-node src/index"
   },
   "author": "Vehbi Karaagac & Olsen Budanur",
   "license": "ISC",
