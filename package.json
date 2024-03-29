@@ -16,8 +16,13 @@
   "author": "Vehbi Karaagac & Olsen Budanur",
   "license": "ISC",
   "devDependencies": {
+    "@types/minimist": "^1.2.5",
     "ts-node": "^10.9.2",
     "tsup": "^8.0.2",
     "typescript": "^5.4.3"
+  },
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "minimist": "^1.2.8"
   }
 }
