@@ -1,6 +1,20 @@
 {
+  "keywords": [
+    "typosquatting",
+    "npm",
+    "package",
+    "security",
+    "validation",
+    "typo",
+    "prevention",
+    "code",
+    "dependency",
+    "module",
+    "registry",
+    "library"
+  ],
   "name": "anti-typosquatting",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Catch those pesky typosquatting libraries, before they catch you!",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
