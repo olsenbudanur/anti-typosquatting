@@ -5,7 +5,7 @@
 
 **A powerful npm package to prevent typosquatting attacks by catching npm install <package_name> typos.**
 
-## Features
+# Features
 
 - 🕵️‍♀️ Detects potential typosquatting attempts in package names.
 - 🧪 Provides suggestions for correct package names.
