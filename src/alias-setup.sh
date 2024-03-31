@@ -33,6 +33,13 @@ echo '        else' >> $shell_config_file
 echo '            shift' >> $shell_config_file
 echo '            npm run safe-install "$@"' >> $shell_config_file
 echo '        fi' >> $shell_config_file
+echo '    elif [[ $1 == "oldinstall" ]]; then' >> $shell_config_file
+echo '        if [ $# -eq 1 ]; then' >> $shell_config_file
+echo '            command npm install' >> $shell_config_file
+echo '        else' >> $shell_config_file
+echo '            shift' >> $shell_config_file
+echo '            command npm install "$@"' >> $shell_config_file
+echo '        fi' >> $shell_config_file
 echo '    else' >> $shell_config_file
 echo '        command npm "$@"' >> $shell_config_file
 echo '    fi' >> $shell_config_file
