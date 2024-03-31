@@ -45,7 +45,14 @@ Lastly, add the following to your package.json:
 
 You can edit how aggressive the typosquatting detection is by changing the `TOLERATED_DISTANCE` variable in the `src/index.ts` file. The threshold is the maximum Levenshtein distance between the package name and the top 10000 packages that is considered safe. By default, the threshold is set to 2, but you can change it to any value you like. Higher, the value, the more aggressive the detection will be.
 
-# How to Use
+## How to Use
 Every time you run `npm install`, anti-typosquatting will check if the package name is a potential typosquatting attempt. If it is, it will provide suggestions for the correct package name. If the package name is safe, the installation will proceed as normal.
 
 If you would like to force-update the list of top 10000 packages, delete the top10000libs.txt file, and run npm install <any_package>
+
+## Contributing
+Contributions are welcome! Feel free to submit issues or pull requests to improve the library.
+
+## License
+anti-typosquation is MIT licensed.
+
