@@ -35,6 +35,8 @@ To set up the alias, use the alias-setup.sh script (make sure to double check yo
 ./src/alias-setup.sh
 ```
 
+(You can still use the npm install without going through the checking if you use npm oldinstall <package_name> after using the alias-setup.sh script)
+
 Lastly, add the following to your package.json:
 
 ```json
