@@ -56,5 +56,5 @@ If you would like to force-update the list of top 10000 packages, delete the top
 Contributions are welcome! Feel free to submit issues or pull requests to improve the library.
 
 ## License
-anti-typosquating is MIT licensed.
+anti-typosquatting is MIT licensed.
 

@@ -1,5 +1,5 @@
 {
-  "name": "anti-typosquating",
+  "name": "anti-typosquatting",
   "version": "1.0.0",
   "description": "Catch those pesky typosquatting libraries, before they catch you!",
   "main": "./dist/index.js",
@@ -29,9 +29,9 @@
     "ts-jest": "^29.1.2"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
-    "url": "git+https://github.com/olsenbudanur/typosquating.git"
+    "url": "git+https://github.com/olsenbudanur/typosquatting.git"
   }
 }
