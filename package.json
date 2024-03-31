@@ -19,7 +19,7 @@
     "npm-install"
   ],
   "name": "anti-typosquatting",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Catch those pesky typosquatting libraries, before they catch you!",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
