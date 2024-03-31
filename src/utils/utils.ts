@@ -136,7 +136,7 @@ export function promptForConfirmation(packageName: string, typo: string[]) {
     //
     // Display the list of possible typos
     let options = typo;
-    options.push(packageName);
+    options.push(packageName + " (This is a suspected typosquatted package, please verify...)");
     let optionsString = options.map((option, index) => `${index + 1}. ${option}`).join('\n');
   
     //

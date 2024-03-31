@@ -5,6 +5,8 @@
 
 **A powerful npm package to prevent typosquatting attacks by catching npm install <package_name> typos.**
 
+![Example](src/examples/typo.gif)
+
 # Features
 
 - 🕵️‍♀️ Detects potential typosquatting attempts in package names.
