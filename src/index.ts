@@ -9,10 +9,10 @@ import fs from 'fs';
 
 //
 // Utils
-import { 
+import {
   checkForTypos, // <-- Runs the Levenshtein distance algorithm on the package name and trusted modules
   executeNpmInstall, // <-- Executes the original npm install command
-  promptForConfirmation // <-- Prompts the user for confirmation if the package name is a typo
+  promptForConfirmation, // <-- Prompts the user for confirmation if the package name is a typo
 } from './utils/utils';
 
 //
@@ -49,15 +49,16 @@ async function main() {
   //
   // Check if the package name is provided
   if (!packageName) {
-    console.error('Usage: safe-install <package_name>\n(Or npm install <package_name> if using alias)');
+    console.error(
+      'Usage: safe-install <package_name>\n(Or npm install <package_name> if using alias)',
+    );
     process.exit(1);
   }
 
   //
-  // Loop through all the trusted modules, and check if 
+  // Loop through all the trusted modules, and check if
   // the package name is close to any of them to detect typos
   let typos = checkForTypos(packageName, TOLERATED_DISTANCE);
-
 
   //
   // If there are typos, we print them to the console
