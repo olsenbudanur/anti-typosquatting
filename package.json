@@ -18,7 +18,7 @@
     "npminstall",
     "npm-install"
   ],
-  "name": "anti-typosquatting2",
+  "name": "anti-typosquatting",
   "version": "1.0.4",
   "description": "Catch those pesky typosquatting libraries, before they catch you!",
   "main": "./dist/index.js",
@@ -27,9 +27,6 @@
   "files": [
     "dist"
   ],
-  "bin": {
-    "safe-install2": "./src/index"
-  },
   "scripts": {
     "build": "tsup",
     "test": "jest",
