@@ -19,7 +19,7 @@
     "npm-install"
   ],
   "name": "typosquatting",
-  "version": "1.0.8",
+  "version": "1.0.11",
   "description": "Catch those pesky typosquatting libraries, before they catch you!",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -47,7 +47,6 @@
   },
   "dependencies": {
     "fs": "^0.0.1-security",
-    "jest": "^29.7.0",
     "lodash": "^4.17.21",
     "minimist": "^1.2.8",
     "prompts": "^2.4.2",
