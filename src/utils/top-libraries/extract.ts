@@ -34,6 +34,7 @@ async function extractLibraryNames(
   jsonFilePath: string = './raw.json',
   outputFilePath: string = __dirname + '/top10000libs.txt',
 ): Promise<void> {
+  console.log("the output file path is: ", outputFilePath)
   //
   // Wait until the raw.json file is downloaded
   while (!fs.existsSync(jsonFilePath)) {
@@ -63,11 +64,8 @@ async function extractLibraryNames(
     // Write library names to the output file
     fs.writeFileSync(outputFilePath, libraryNames.join('\n'));
 
-    // console.log('Library names extracted and saved to', outputFilePath);
-
     //
     // Remove raw.json file
-    // console.log('Removing raw.json file...');
     fs.unlinkSync(jsonFilePath);
   } catch (error) {
     console.error('Error parsing JSON data:', error);
@@ -78,6 +76,9 @@ async function extractLibraryNames(
  * Downloads the latest top 10000 libraries and extracts the library names.
  */
 export async function getLatestTop10000Libraries() {
+  console.log('Downloading the latest top 10000 libraries...');
   await downloadLatestTop();
+  console.log('Extracting library names...');
   await extractLibraryNames();
+  console.log('Library names extracted successfully!');
 }

@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import prompts from 'prompts';
+
 /**
  *
  * This function calculates the Levenshtein distance between two strings.
@@ -140,19 +141,28 @@ export async function promptForConfirmation(
       ' (This is a suspected typosquatted package, please verify...)',
   );
 
+  
   const options: prompts.Choice[] = [
     ...typo.map((t) => ({ title: t, value: t })),
   ];
+  options.push({ title: packageName + " (suspected typosquatted package)", value: packageName });
+  options.push({ title: 'None of the above', value: 'none' });
+  
 
   //
   // Prompt the user for confirmation
   const pickedPackage = await prompts({
     type: 'select',
     name: 'value',
-    message: 'Pick a category',
+    message: 'Pick the package you want to install:',
     choices: options,
-    initial: 1,
+    initial: 0,
   });
+
+  if (pickedPackage.value === 'none' || !pickedPackage.value) {
+    console.log('Exiting...');
+    process.exit(0);
+  }
 
   executeNpmInstall(pickedPackage.value);
 }

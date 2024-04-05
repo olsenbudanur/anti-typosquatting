@@ -20,11 +20,15 @@ import {
 import { getLatestTop10000Libraries } from './utils/top-libraries/extract';
 
 //
-// Constants
+// Configs
 //
 // The tolerated distance between the package name and the trusted modules
 // higher the distance, more suggestions will be shown
-const TOLERATED_DISTANCE = 2;
+// Read from env variable, if not present, use the default value
+let TOLERATED_DISTANCE = 2
+if (process.env.TYPOSQUATTING_TOLERATED_DISTANCE) {
+  TOLERATED_DISTANCE = parseInt(process.env.TYPOSQUATTING_TOLERATED_DISTANCE);
+}
 
 //
 // Extract package name from command line arguments
@@ -38,8 +42,16 @@ async function main() {
   //
   // Check if top libraries are downloaded, if not, download them with the latest version
   // Users can delete the top10000libs.txt file to force a new download :)
-  if (!fs.existsSync('./utils/top-libraries/top10000libs.txt')) {
+  // User can also pass "refresh" flag to force a new download
+  if (!fs.existsSync(`${__dirname}/utils/top-libraries/top10000libs.txt`) || args.refresh) {
     await getLatestTop10000Libraries();
+  }
+
+  //
+  // If the user wants to change the tolerated distance, they can do so by passing the flag
+  // Example: npi --distance=3 and we change env variable to 3
+  if (args.distance) {
+    process.env.TYPOSQUATTING_TOLERATED_DISTANCE = args.distance;
   }
 
   //
@@ -50,7 +62,7 @@ async function main() {
   // Check if the package name is provided
   if (!packageName) {
     console.error(
-      'Usage: safe-install <package_name>\n(Or npm install <package_name> if using alias)',
+      'Usage: npi <package_name>\n(Or npm install <package_name> if using alias)',
     );
     process.exit(1);
   }

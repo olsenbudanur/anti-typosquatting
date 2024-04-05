@@ -31,7 +31,7 @@ echo '        if [ $# -eq 1 ]; then' >> $shell_config_file
 echo '            command npm install' >> $shell_config_file
 echo '        else' >> $shell_config_file
 echo '            shift' >> $shell_config_file
-echo '            npm run safe-install "$@"' >> $shell_config_file
+echo '            npi "$@"' >> $shell_config_file
 echo '        fi' >> $shell_config_file
 echo '    elif [[ $1 == "oldinstall" ]]; then' >> $shell_config_file
 echo '        if [ $# -eq 1 ]; then' >> $shell_config_file
@@ -49,4 +49,4 @@ echo '}' >> $shell_config_file
 # Reload the shell configuration
 source $shell_config_file
 
-echo 'Alias setup complete. You can now use "npm install" or "npm i" as "npm run safe-install".'
+echo 'Alias setup complete. You can now use "npm install" or "npm i" as "npi".'
