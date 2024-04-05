@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-
+import prompts from 'prompts';
 /**
  *
  * This function calculates the Levenshtein distance between two strings.
@@ -131,39 +131,28 @@ export function executeNpmInstall(packageName: string) {
  * @param packageName the package name to install
  * @param typo the list of possible typos
  */
-export function promptForConfirmation(packageName: string, typo: string[]) {
-  //
-  // Initialize the readline interface
-  const readline = require('readline').createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
-  //
-  // Display the list of possible typos
-  let options = typo;
-  options.push(
+export async function promptForConfirmation(
+  packageName: string,
+  typo: string[],
+) {
+  console.log(
     packageName +
       ' (This is a suspected typosquatted package, please verify...)',
   );
-  let optionsString = options
-    .map((option, index) => `${index + 1}. ${option}`)
-    .join('\n');
+
+  const options: prompts.Choice[] = [
+    ...typo.map((t) => ({ title: t, value: t })),
+  ];
 
   //
   // Prompt the user for confirmation
-  readline.question(
-    `Did you mean to install one of the following packages?\n${optionsString}\nPick a number or press 'N' to exit: `,
-    (answer: any) => {
-      if (answer.toLowerCase() === 'n') {
-        readline.close();
-        process.exit(1);
-      } else {
-        let index = parseInt(answer) - 1;
-        let selectedOption = options[index];
-        readline.close();
-        executeNpmInstall(selectedOption);
-      }
-    },
-  );
+  const pickedPackage = await prompts({
+    type: 'select',
+    name: 'value',
+    message: 'Pick a category',
+    choices: options,
+    initial: 1,
+  });
+
+  executeNpmInstall(pickedPackage.value);
 }

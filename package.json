@@ -31,7 +31,7 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "safe-install": "ts-node src/index"
+    "start": "ts-node src/index"
   },
   "author": "Vehbi Karaagac & Olsen Budanur",
   "license": "MIT",
@@ -39,14 +39,18 @@
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/jest": "^29.5.12",
     "@types/minimist": "^1.2.5",
+    "@types/prompts": "^2.4.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
   },
   "dependencies": {
     "fs": "^0.0.1-security",
     "jest": "^29.7.0",
+    "lodash": "^4.17.21",
     "minimist": "^1.2.8",
-    "ts-jest": "^29.1.2"
+    "prompts": "^2.4.2",
+    "ts-jest": "^29.1.2",
+    "undefined": "^0.1.0"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"

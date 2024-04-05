@@ -63,11 +63,11 @@ async function extractLibraryNames(
     // Write library names to the output file
     fs.writeFileSync(outputFilePath, libraryNames.join('\n'));
 
-    console.log('Library names extracted and saved to', outputFilePath);
+    // console.log('Library names extracted and saved to', outputFilePath);
 
     //
     // Remove raw.json file
-    console.log('Removing raw.json file...');
+    // console.log('Removing raw.json file...');
     fs.unlinkSync(jsonFilePath);
   } catch (error) {
     console.error('Error parsing JSON data:', error);
