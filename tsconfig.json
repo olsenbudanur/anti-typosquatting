@@ -106,5 +106,7 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "exclude": ["./src/tests"]
+  "exclude": ["./src/tests"],
+  // i want to include the txt
+  "include": ["./src/**/*.ts", "./src/**/*.txt"]
 }

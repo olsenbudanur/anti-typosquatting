@@ -19,7 +19,7 @@
     "npm-install"
   ],
   "name": "anti-typosquatting",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "Catch those pesky typosquatting libraries, before they catch you!",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -31,7 +31,7 @@
     "npi": "./dist/index.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp src/utils/top-libraries/top10000libs.txt dist/utils/top-libraries/top10000libs.txt",
     "test": "jest",
     "start": "ts-node src/index"
   },
