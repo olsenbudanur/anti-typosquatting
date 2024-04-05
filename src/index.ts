@@ -49,9 +49,12 @@ async function main() {
 
   //
   // If the user wants to change the tolerated distance, they can do so by passing the flag
-  // Example: npi --distance=3 and we change env variable to 3
+  // Example: npi --distance=3 and we change env variable to 3.
+  // This is not persistent and will be reset on the next run. So, if you want to make it permanent,
+  // you can add it to your .bashrc or .zshrc file.
   if (args.distance) {
     process.env.TYPOSQUATTING_TOLERATED_DISTANCE = args.distance;
+    return;
   }
 
   //
@@ -73,16 +76,11 @@ async function main() {
   let typos = checkForTypos(packageName, TOLERATED_DISTANCE);
 
   //
-  // If there are typos, we print them to the console
-  if (typos.length > 0) {
-    let end = new Date().getTime();
-    console.log(`Found ${typos.length} possible typos in ${end - start}ms:`);
-  }
-
-  //
   // If there are no typos, we can proceed with the original npm install command
   // Otherwise, we prompt the user for confirmation
   if (typos.length > 0) {
+    let end = new Date().getTime();
+    console.log(`Found ${typos.length} possible typos in ${end - start}ms:`);
     promptForConfirmation(packageName, typos);
   } else {
     executeNpmInstall(packageName);

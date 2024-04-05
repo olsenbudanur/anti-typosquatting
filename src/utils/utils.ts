@@ -137,8 +137,9 @@ export async function promptForConfirmation(
   typo: string[],
 ) {
   console.log(
+    "You attempted to install " + 
     packageName +
-      ' (This is a suspected typosquatted package, please verify...)',
+      '. This is a suspected typosquatted package, please verify...',
   );
 
   
