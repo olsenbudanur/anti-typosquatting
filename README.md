@@ -14,13 +14,6 @@
 - ⚙️ Integrates seamlessly with your existing npm workflows.
 - ⚡️ Lightweight and fast, averaging 10ms per package check.
 
-# How it Works
-Anti-typosquatting uses the [Levenshtein distance algorithm](https://en.wikipedia.org/wiki/Levenshtein_distance) to calculate the similarity between the package that the user wants to install against the top 10000 npm packages (retrieved from [LeoDog896's latest npm-rank release](https://github.com/LeoDog896/npm-rank)).
-
-The Levenshtein distance between two strings is calculated by finding the minimum number of operations required to transform one string into the other (operations being insertions, deletions, or substitutions). This is a perfect way to detect typosquatting attempts, as it can detect small differences between two strings that are caused by typos or misspellings.
-
-Levenshtein distance algorithm's dynamic programming implementation has a time complexity of O(m*n), where m and n are the lengths of the two strings being compared, so the algorithm is very fast and efficient. On average, the algorithm takes around 10ms to calculate the similarity between the package name and the top 10000 packages, making it a great choice for typosquatting detection.
-
 # How to use
 ```bash
 npi <package_name> # instals the package if it is safe, otherwise provides suggestions for the correct package name
@@ -29,6 +22,14 @@ npi --distance <distance> # sets the tolerated distance for typosquatting detect
 ```
 
 Every time you run `npi <package_name>`, anti-typosquatting will check if the package name is a potential typosquatting attempt. If it is, it will provide suggestions for the correct package name. If the package name is safe, the installation will proceed as normal.
+
+# How it Works
+Anti-typosquatting uses the [Levenshtein distance algorithm](https://en.wikipedia.org/wiki/Levenshtein_distance) to calculate the similarity between the package that the user wants to install against the top 10000 npm packages (retrieved from [LeoDog896's latest npm-rank release](https://github.com/LeoDog896/npm-rank)).
+
+The Levenshtein distance between two strings is calculated by finding the minimum number of operations required to transform one string into the other (operations being insertions, deletions, or substitutions). This is a perfect way to detect typosquatting attempts, as it can detect small differences between two strings that are caused by typos or misspellings.
+
+Levenshtein distance algorithm's dynamic programming implementation has a time complexity of O(m*n), where m and n are the lengths of the two strings being compared, so the algorithm is very fast and efficient. On average, the algorithm takes around 10ms to calculate the similarity between the package name and the top 10000 packages, making it a great choice for typosquatting detection.
+
 
 ## Installation
 
