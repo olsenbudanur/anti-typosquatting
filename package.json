@@ -27,18 +27,19 @@
   "files": [
     "dist"
   ],
+  "bin": "dist/index.js",
   "scripts": {
-    "build": "tsup",
+    "build": "tsc",
     "test": "jest",
     "safe-install": "ts-node src/index"
   },
   "author": "Vehbi Karaagac & Olsen Budanur",
   "license": "MIT",
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/jest": "^29.5.12",
     "@types/minimist": "^1.2.5",
     "ts-node": "^10.9.2",
-    "tsup": "^8.0.2",
     "typescript": "^5.4.3"
   },
   "dependencies": {

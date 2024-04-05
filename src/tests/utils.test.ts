@@ -1,4 +1,8 @@
-import { levenshteinDistance, trustedPackages, checkForTypos } from '../src/utils/utils';
+import {
+  levenshteinDistance,
+  trustedPackages,
+  checkForTypos,
+} from '../utils/utils';
 
 describe('levenshteinDistance', () => {
   test('calculates the Levenshtein distance correctly', () => {
